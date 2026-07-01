@@ -1,0 +1,5 @@
+1. is-this-repo-made-by-ai : check whether the repo is made by ai or a human.
+ 
+	MEASURE : if repo is made very quick meaning commits are done within minutes. Then its AI made or at least assisted.
+		: Plot number of commits (y-axis) to time (x-axis) for better judgement.
+		: output a % as a result indicating how much code is written by AI.  

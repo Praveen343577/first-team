@@ -1,0 +1,169 @@
+1000863@EKA-W-00020 MINGW64 ~
+$ ssh-keygen -t ed25519 -C "0praveen1ahirwar22@gmail.com" -f ~/.ssh/id_ed25519_personal
+Generating public/private ed25519 key pair.
+Created directory '/c/Users/1000863/.ssh'.
+Enter passphrase for "/c/Users/1000863/.ssh/id_ed25519_personal" (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /c/Users/1000863/.ssh/id_ed25519_personal
+Your public key has been saved in /c/Users/1000863/.ssh/id_ed25519_personal.pub
+The key fingerprint is:
+SHA256:mdjJls5fM41AuEJdN5mFpnq2ZmKzagHk3wueGDq68n8 0praveen1ahirwar22@gmail.com
+The key's randomart image is:
++--[ED25519 256]--+
+|          . o=.  |
+|    .  . o .=.   |
+|   o  . o .o     |
+|    o. + B.      |
+|     oo.S..      |
+|    . +=o o. o   |
+|   . + +o+ .= .  |
+|. o . E =.+. o   |
+|++.o.o.o.*.      |
++----[SHA256]-----+
+
+1000863@EKA-W-00020 MINGW64 ~
+$ ^C
+
+1000863@EKA-W-00020 MINGW64 ~
+$ cat ~/.ssh/id_ed25519_personal.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOkTOZ5YwynTY5aomEfopE/as+DjgPq7bOph1BGbADJu 0praveen1ahirwar22@gmail.com
+
+1000863@EKA-W-00020 MINGW64 ~
+$ ^C
+
+1000863@EKA-W-00020 MINGW64 ~
+$ ^C
+
+1000863@EKA-W-00020 MINGW64 ~
+$ ssh -T -i ~/.ssh/id_ed25519_personal git@github.com
+The authenticity of host 'github.com (20.207.73.82)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+Hi Praveen343577! You've successfully authenticated, but GitHub does not provide shell access.
+
+1000863@EKA-W-00020 MINGW64 ~
+$ cd "C:\Users\1000863\Desktop\26mar26\Fleet Management Dashboard"
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard
+$ git init
+Initialized empty Git repository in C:/Users/1000863/Desktop/26mar26/Fleet Management Dashboard/.git/
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (master)
+$ git config user.name "Praveen Ahirwar"
+git config user.email "0praveen1ahirwar22@gmail.com"
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (master)
+$ git config core.sshCommand "ssh -i ~/.ssh/id_ed25519_personal"
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (master)
+$ git config user.name
+git config user.email
+Praveen Ahirwar
+0praveen1ahirwar22@gmail.com
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (master)
+$ git add .
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (master)
+$ git commit -m "First commit"
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (master)
+$ git remote add origin git@github.com:Praveen343577/fleet-management-dashboard.git
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (master)
+$ git branch -M main
+git push -u origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'github.com:Praveen343577/fleet-management-dashboard.git'
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ ^C
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ ls -la
+total 12
+drwxr-xr-x 1 1000863 1049089 0 Mar 27 21:13 ./
+drwxr-xr-x 1 1000863 1049089 0 Mar 27 19:41 ../
+drwxr-xr-x 1 1000863 1049089 0 Mar 27 21:20 .git/
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ echo "# Fleet Management Dashboard" > README.md
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ ls -la
+total 13
+drwxr-xr-x 1 1000863 1049089  0 Mar 27 21:22 ./
+drwxr-xr-x 1 1000863 1049089  0 Mar 27 19:41 ../
+drwxr-xr-x 1 1000863 1049089  0 Mar 27 21:20 .git/
+-rw-r--r-- 1 1000863 1049089 29 Mar 27 21:22 README.md
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ git add .
+git commit -m "Initial commit"
+git push -u origin main
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+[main (root-commit) a53fcb3] Initial commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 249 bytes | 249.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To github.com:Praveen343577/fleet-management-dashboard.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ git branch -M main
+git pull origin main
+From github.com:Praveen343577/fleet-management-dashboard
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ ^C
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ cat << 'EOF' > ~/.gitconfig-personal
+[user]
+    name = Praveen Ahirwar
+    email = 0praveen1ahirwar22@gmail.com
+[core]
+    sshCommand = ssh -i ~/.ssh/id_ed25519_personal
+EOF
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ git config --global includeIf."gitdir:C:/Users/1000863/Desktop/26mar26/".path ~/.gitconfig-personal
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ git config --global --get-regex includeIf
+includeif.gitdir:C:/Users/1000863/Desktop/26mar26/.path C:/Users/1000863/.gitconfig-personal
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ cat ~/.gitconfig-personal
+[user]
+    name = Praveen Ahirwar
+    email = 0praveen1ahirwar22@gmail.com
+[core]
+    sshCommand = ssh -i ~/.ssh/id_ed25519_personal
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ cd "C:/Users/1000863/Desktop/26mar26/Fleet Management Dashboard"
+git config user.email
+git config core.sshCommand
+0praveen1ahirwar22@gmail.com
+ssh -i ~/.ssh/id_ed25519_personal
+
+1000863@EKA-W-00020 MINGW64 ~/Desktop/26mar26/Fleet Management Dashboard (main)
+$ cd ~
+
+1000863@EKA-W-00020 MINGW64 ~
+$ git config user.email
+praveen.ahirwar@ekamobility.com

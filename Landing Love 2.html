@@ -1,0 +1,1043 @@
+Landing Love
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>untold - We tell untold stories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f3ef;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Custom cursor */
+        .custom-cursor {
+            width: 8px;
+            height: 8px;
+            background: #ff5722;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease-out, opacity 0.15s;
+            mix-blend-mode: difference;
+        }
+        
+        .custom-cursor.hover {
+            transform: scale(4);
+            opacity: 0.5;
+        }
+        
+        /* Navigation hover effect */
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .nav-link:hover::after {
+            transform: translateX(0);
+        }
+        
+        /* Hero text animation */
+        .hero-word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Floating animation for images */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(10px) rotate(-1deg); }
+        }
+        
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .float-anim-reverse {
+            animation: floatReverse 5s ease-in-out infinite;
+        }
+        
+        /* Image stack hover effect */
+        .image-stack {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .image-stack:hover {
+            transform: scale(1.02) rotate(-2deg);
+        }
+        
+        .image-stack img {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .image-stack:hover img:nth-child(1) {
+            transform: translateX(-10px) rotate(-5deg);
+        }
+        
+        .image-stack:hover img:nth-child(2) {
+            transform: translateX(5px) rotate(3deg);
+        }
+        
+        .image-stack:hover img:nth-child(3) {
+            transform: translateX(15px) rotate(8deg);
+        }
+        
+        /* Button hover effect */
+        .btn-primary {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 0;
+        }
+        
+        .btn-primary:hover::before {
+            left: 0;
+        }
+        
+        .btn-primary:hover {
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+        }
+        
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Scroll indicator animation */
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+        
+        .scroll-indicator {
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+        
+        /* Hand drawing animation */
+        @keyframes drawHand {
+            0% { stroke-dashoffset: 1000; }
+            100% { stroke-dashoffset: 0; }
+        }
+        
+        .hand-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: drawHand 3s ease-out forwards;
+        }
+        
+        /* Asterisk spin */
+        @keyframes slowSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .asterisk {
+            animation: slowSpin 20s linear infinite;
+        }
+        
+        /* Door illustration hover */
+        .door-illustration {
+            transition: transform 0.3s ease;
+        }
+        
+        .door-illustration:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Menu button hover */
+        .menu-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .menu-btn:hover {
+            transform: scale(1.1);
+            background: #1a1a1a;
+            color: #fff;
+        }
+        
+        /* Grain texture overlay */
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        /* Marquee animation */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .marquee-track {
+            animation: marquee 30s linear infinite;
+        }
+        
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+        
+        /* Card hover effects */
+        .work-card {
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .work-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .work-card:hover .card-image {
+            transform: scale(1.05);
+        }
+        
+        .card-image {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        /* Accordion styles */
+        .accordion-item {
+            border-bottom: 1px solid #e5e5e5;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .accordion-item.active .accordion-content {
+            max-height: 500px;
+        }
+        
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+        
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        /* Footer link hover */
+        .footer-link {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-link:hover::after {
+            width: 100%;
+        }
+        
+        /* Reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Stagger children */
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .stagger-children.visible > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+        .stagger-children.visible > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+        
+        /* Number counter animation */
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* Image reveal mask */
+        .image-reveal {
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .image-reveal.visible {
+            clip-path: inset(0 0 0 0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Grain texture -->
+    <div class="grain"></div>
+    
+    <!-- Custom cursor -->
+    <div class="custom-cursor" id="cursor"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 px-6 py-6 flex justify-between items-center mix-blend-difference text-white">
+        <div class="text-2xl font-medium tracking-tight hover:opacity-70 transition-opacity cursor-pointer" style="color: #1a1a1a; mix-blend-mode: difference;">
+            untold
+        </div>
+        
+        <div class="hidden md:flex items-center gap-12 text-sm font-medium tracking-wide" style="color: #1a1a1a; mix-blend-mode: difference;">
+            <a href="#work" class="nav-link cursor-pointer">work</a>
+            <a href="#about" class="nav-link cursor-pointer">about</a>
+            <a href="#contact" class="nav-link cursor-pointer">contact</a>
+        </div>
+        
+        <div class="flex items-center gap-4">
+            <button class="text-sm font-medium tracking-wide flex items-center gap-1 hover:opacity-70 transition-opacity" style="color: #1a1a1a; mix-blend-mode: difference;">
+                (EN) <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+            <button class="menu-btn w-10 h-10 rounded-full bg-[#ff5722] flex items-center justify-center text-white">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section class="relative min-h-screen pt-24 pb-32 px-6 md:px-12 lg:px-24 flex items-center justify-center">
+        <div class="relative max-w-7xl mx-auto w-full">
+            
+            <!-- Main Typography Composition -->
+            <div class="relative z-10 pt-12 md:pt-20">
+                
+                <!-- Line 1: "we * tell" with door -->
+                <div class="flex items-center justify-center gap-4 md:gap-8 flex-wrap mb-2">
+                    <h1 class="hero-word text-6xl md:text-8xl lg:text-[10rem] font-light tracking-tighter leading-none" style="animation-delay: 0.1s;">
+                        we
+                    </h1>
+                    
+                    <!-- Video/Image container with asterisk -->
+                    <div class="hero-word relative w-32 h-20 md:w-48 md:h-28 lg:w-64 lg:h-36 overflow-hidden rounded-sm float-anim" style="animation-delay: 0.2s;">
+                        <div class="absolute inset-0 bg-black">
+                            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&h=300&fit=crop" 
+                                 class="w-full h-full object-cover opacity-80" alt="Event">
+                        </div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="asterisk text-[#ff5722] text-4xl md:text-6xl font-bold">*</span>
+                        </div>
+                    </div>
+                    
+                    <h1 class="hero-word text-6xl md:text-8xl lg:text-[10rem] font-light tracking-tighter leading-none" style="animation-delay: 0.3s;">
+                        tell
+                    </h1>
+                    
+                    <!-- Door illustration -->
+                    <div class="hero-word door-illustration relative w-16 h-24 md:w-24 md:h-36 float-anim-reverse" style="animation-delay: 0.4s;">
+                        <svg viewBox="0 0 100 150" class="w-full h-full">
+                            <rect x="10" y="10" width="80" height="130" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+                            <path d="M10 10 L50 30 L50 120 L10 140 Z" fill="#ff5722" stroke="#1a1a1a" stroke-width="2"/>
+                            <circle cx="35" cy="60" r="8" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+                            <path d="M35 70 L35 100 M25 85 L45 85 M35 100 L25 120 M35 100 L45 120" stroke="#1a1a1a" stroke-width="2" fill="none"/>
+                            <text x="55" y="25" font-size="12" fill="#1a1a1a">✦</text>
+                            <text x="65" y="20" font-size="8" fill="#1a1a1a">✦</text>
+                        </svg>
+                    </div>
+                </div>
+                
+                <!-- Line 2: "untold" -->
+                <div class="text-center -mt-4 md:-mt-8">
+                    <h1 class="hero-word text-6xl md:text-8xl lg:text-[10rem] font-light tracking-tighter leading-none" style="animation-delay: 0.5s;">
+                        untold
+                    </h1>
+                </div>
+                
+                <!-- Line 3: "(image) stories" with description -->
+                <div class="flex items-center justify-center gap-4 md:gap-12 flex-wrap mt-2">
+                    <!-- Image stack -->
+                    <div class="hero-word image-stack relative w-32 h-24 md:w-48 md:h-32 lg:w-56 lg:h-40 cursor-pointer" style="animation-delay: 0.6s;">
+                        <div class="absolute inset-0 rounded-sm overflow-hidden shadow-lg transform -rotate-6 translate-x-2">
+                            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=400&h=300&fit=crop" 
+                                 class="w-full h-full object-cover" alt="Concert 1">
+                        </div>
+                        <div class="absolute inset-0 rounded-sm overflow-hidden shadow-lg transform rotate-3 -translate-x-1">
+                            <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=300&fit=crop" 
+                                 class="w-full h-full object-cover" alt="Concert 2">
+                        </div>
+                        <div class="absolute inset-0 rounded-sm overflow-hidden shadow-xl transform -rotate-3">
+                            <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=400&h=300&fit=crop" 
+                                 class="w-full h-full object-cover" alt="Concert 3">
+                        </div>
+                        <div class="absolute -left-8 top-1/2 -translate-y-1/2 text-4xl md:text-6xl text-[#1a1a1a] opacity-30 font-light">(</div>
+                        <div class="absolute -right-8 top-1/2 -translate-y-1/2 text-4xl md:text-6xl text-[#1a1a1a] opacity-30 font-light">)</div>
+                    </div>
+                    
+                    <h1 class="hero-word text-6xl md:text-8xl lg:text-[10rem] font-light tracking-tighter leading-none" style="animation-delay: 0.7s;">
+                        stories
+                    </h1>
+                    
+                    <!-- Description text -->
+                    <div class="hero-word max-w-xs text-xs md:text-sm leading-relaxed text-gray-600 ml-4 md:ml-8 border-l-2 border-gray-300 pl-4" style="animation-delay: 0.8s;">
+                        <p class="mb-2"><span class="text-[#ff5722]">(</span> We are a communications ecosystem built to rethink how communication happens. Six agencies. One integrated team</p>
+                    </div>
+                </div>
+                
+                <!-- CTA Button -->
+                <div class="hero-word flex justify-center mt-12 md:mt-16" style="animation-delay: 0.9s;">
+                    <button class="btn-primary bg-[#ff5722] text-white px-8 py-4 text-xs md:text-sm font-semibold tracking-widest uppercase rounded-sm">
+                        <span class="flex items-center gap-2">
+                            <span class="w-1 h-1 bg-white rounded-full"></span>
+                            Explore Our Ecosystem
+                        </span>
+                    </button>
+                </div>
+                
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute right-0 top-1/2 transform -translate-y-1/2 hidden lg:flex flex-col items-center gap-4">
+                <span class="text-xs tracking-widest uppercase text-gray-400 transform -rotate-90 origin-center whitespace-nowrap mb-8">
+                    Scroll to discover
+                </span>
+                <div class="scroll-indicator w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center pt-2">
+                    <div class="w-1 h-2 bg-gray-400 rounded-full"></div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- Bottom Illustrations -->
+        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-4xl pointer-events-none px-12 md:px-24">
+            <div class="flex justify-between items-end">
+                <div class="h-32 w-px bg-gray-300 mb-8"></div>
+                
+                <div class="relative w-48 h-32 md:w-64 md:h-40">
+                    <svg viewBox="0 0 200 120" class="w-full h-full">
+                        <g class="hand-path" style="animation-delay: 1s;">
+                            <path d="M60 100 Q50 80 55 60 Q60 40 70 30 Q75 25 80 30 Q85 35 80 45 Q75 55 70 65 Q65 75 70 85 Q75 95 85 100" 
+                                  fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M70 30 Q65 20 60 25 Q55 30 60 35 M75 35 Q70 25 65 30 M80 40 Q75 30 70 35" 
+                                  fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M85 100 L95 105 M88 95 L98 100 M91 90 L101 95" 
+                                  fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+                        </g>
+                        <g class="hand-path" style="animation-delay: 1.5s;">
+                            <path d="M140 100 Q150 80 145 60 Q140 40 130 30 Q125 25 120 30 Q115 35 120 45 Q125 55 130 65 Q135 75 130 85 Q125 95 115 100" 
+                                  fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M130 30 Q135 20 140 25 Q145 30 140 35 M125 35 Q130 25 135 30 M120 40 Q125 30 130 35" 
+                                  fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M115 100 L105 105 M112 95 L102 100 M109 90 L99 95" 
+                                  fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Marquee -->
+    <section class="py-8 border-y border-gray-200 overflow-hidden bg-[#f5f3ef]">
+        <div class="marquee-track flex whitespace-nowrap">
+            <span class="text-6xl md:text-8xl font-light mx-8 opacity-20">Strategy</span>
+            <span class="text-[#ff5722] mx-4">*</span>
+            <span class="text-6xl md:text-8xl font-light mx-8 opacity-20">Creative</span>
+            <span class="text-[#ff5722] mx-4">*</span>
+            <span class="text-6xl md:text-8xl font-light mx-8 opacity-20">Technology</span>
+            <span class="text-[#ff5722] mx-4">*</span>
+            <span class="text-6xl md:text-8xl font-light mx-8 opacity-20">Production</span>
+            <span class="text-[#ff5722] mx-4">*</span>
+            <span class="text-6xl md:text-8xl font-light mx-8 opacity-20">Media</span>
+            <span class="text-[#ff5722] mx-4">*</span>
+            <span class="text-6xl md:text-8xl font-light mx-8 opacity-20">Strategy</span>
+            <span class="text-[#ff5722] mx-4">*</span>
+            <span class="text-6xl md:text-8xl font-light mx-8 opacity-20">Creative</span>
+            <span class="text-[#ff5722] mx-4">*</span>
+            <span class="text-6xl md:text-8xl font-light mx-8 opacity-20">Technology</span>
+            <span class="text-[#ff5722] mx-4">*</span>
+            <span class="text-6xl md:text-8xl font-light mx-8 opacity-20">Production</span>
+            <span class="text-[#ff5722] mx-4">*</span>
+            <span class="text-6xl md:text-8xl font-light mx-8 opacity-20">Media</span>
+            <span class="text-[#ff5722] mx-4">*</span>
+        </div>
+    </section>
+
+    <!-- Section 3: Featured Work -->
+    <section id="work" class="py-24 px-6 md:px-12 lg:px-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16 reveal">
+                <div>
+                    <span class="text-sm text-gray-500 tracking-widest uppercase mb-4 block">Selected Projects</span>
+                    <h2 class="text-4xl md:text-6xl font-light">Featured Work</h2>
+                </div>
+                <a href="#" class="hidden md:flex items-center gap-2 text-sm font-medium hover:text-[#ff5722] transition-colors">
+                    View all projects 
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 stagger-children">
+                <!-- Project 1 -->
+                <div class="work-card group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-sm mb-6 aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop" 
+                             class="card-image w-full h-full object-cover" alt="Conference">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
+                        <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="bg-[#ff5722] text-white text-xs px-3 py-1 rounded-full">Live Events</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-light mb-2 group-hover:text-[#ff5722] transition-colors">Global Tech Summit 2024</h3>
+                    <p class="text-gray-600 text-sm">Brand Strategy • Experience Design • Production</p>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="work-card group cursor-pointer md:mt-24">
+                    <div class="relative overflow-hidden rounded-sm mb-6 aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=600&fit=crop" 
+                             class="card-image w-full h-full object-cover" alt="Festival">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
+                        <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="bg-[#ff5722] text-white text-xs px-3 py-1 rounded-full">Festival</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-light mb-2 group-hover:text-[#ff5722] transition-colors">Neon Nights Festival</h3>
+                    <p class="text-gray-600 text-sm">Creative Direction • Digital • Social Media</p>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="work-card group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-sm mb-6 aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&h=600&fit=crop" 
+                             class="card-image w-full h-full object-cover" alt="Meeting">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
+                        <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="bg-[#ff5722] text-white text-xs px-3 py-1 rounded-full">Corporate</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-light mb-2 group-hover:text-[#ff5722] transition-colors">Innovation Labs Launch</h3>
+                    <p class="text-gray-600 text-sm">Strategy • Content • PR</p>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="work-card group cursor-pointer md:mt-24">
+                    <div class="relative overflow-hidden rounded-sm mb-6 aspect-[4/3]">
+                        <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=600&fit=crop" 
+                             class="card-image w-full h-full object-cover" alt="Concert">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500"></div>
+                        <div class="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="bg-[#ff5722] text-white text-xs px-3 py-1 rounded-full">Entertainment</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-light mb-2 group-hover:text-[#ff5722] transition-colors">Symphony in the Park</h3>
+                    <p class="text-gray-600 text-sm">Production • Broadcast • Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Ecosystem -->
+    <section class="py-24 px-6 md:px-12 lg:px-24 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <span class="text-sm text-gray-500 tracking-widest uppercase mb-4 block">Our Ecosystem</span>
+                    <h2 class="text-4xl md:text-5xl font-light mb-8 leading-tight">Six specialized agencies.<br>One unified vision.</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">We bring together diverse expertise under one roof. From strategic planning to execution, our integrated approach ensures seamless storytelling across every touchpoint.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4 group cursor-pointer">
+                            <span class="text-[#ff5722] font-medium text-sm mt-1">01</span>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1 group-hover:text-[#ff5722] transition-colors">Untold Strategy</h4>
+                                <p class="text-sm text-gray-500">Research, insights, and strategic planning</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 group cursor-pointer">
+                            <span class="text-[#ff5722] font-medium text-sm mt-1">02</span>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1 group-hover:text-[#ff5722] transition-colors">Untold Creative</h4>
+                                <p class="text-sm text-gray-500">Brand identity, campaigns, and content</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 group cursor-pointer">
+                            <span class="text-[#ff5722] font-medium text-sm mt-1">03</span>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1 group-hover:text-[#ff5722] transition-colors">Untold Digital</h4>
+                                <p class="text-sm text-gray-500">Technology, platforms, and innovation</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 group cursor-pointer">
+                            <span class="text-[#ff5722] font-medium text-sm mt-1">04</span>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1 group-hover:text-[#ff5722] transition-colors">Untold Production</h4>
+                                <p class="text-sm text-gray-500">Film, events, and experiences</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 group cursor-pointer">
+                            <span class="text-[#ff5722] font-medium text-sm mt-1">05</span>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1 group-hover:text-[#ff5722] transition-colors">Untold Media</h4>
+                                <p class="text-sm text-gray-500">Planning, buying, and optimization</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 group cursor-pointer">
+                            <span class="text-[#ff5722] font-medium text-sm mt-1">06</span>
+                            <div>
+                                <h4 class="text-lg font-medium mb-1 group-hover:text-[#ff5722] transition-colors">Untold PR</h4>
+                                <p class="text-sm text-gray-500">Communications and reputation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative reveal">
+                    <div class="image-reveal rounded-sm overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=1000&fit=crop" 
+                             class="w-full h-auto object-cover" alt="Team working">
+                    </div>
+                    <div class="absolute -bottom-8 -left-8 w-48 h-48 bg-[#ff5722] rounded-sm -z-10"></div>
+                    <div class="absolute -top-8 -right-8 w-32 h-32 border-2 border-[#1a1a1a] rounded-sm -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Stats -->
+    <section class="py-24 px-6 md:px-12 lg:px-24 border-y border-gray-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 stagger-children">
+                <div class="text-center">
+                    <span class="stat-number text-5xl md:text-7xl font-light block mb-2" data-target="150">0</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest">Projects</span>
+                </div>
+                <div class="text-center">
+                    <span class="stat-number text-5xl md:text-7xl font-light block mb-2" data-target="50">0</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest">Clients</span>
+                </div>
+                <div class="text-center">
+                    <span class="stat-number text-5xl md:text-7xl font-light block mb-2" data-target="6">0</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest">Agencies</span>
+                </div>
+                <div class="text-center">
+                    <span class="stat-number text-5xl md:text-7xl font-light block mb-2" data-target="12">0</span>
+                    <span class="text-sm text-gray-500 uppercase tracking-widest">Years</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Services Accordion -->
+    <section class="py-24 px-6 md:px-12 lg:px-24">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-sm text-gray-500 tracking-widest uppercase mb-4 block">What we do</span>
+                <h2 class="text-4xl md:text-6xl font-light">Capabilities</h2>
+            </div>
+            
+            <div class="space-y-0 stagger-children">
+                <div class="accordion-item py-6 cursor-pointer" onclick="toggleAccordion(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl md:text-3xl font-light">Brand Strategy</h3>
+                        <span class="accordion-icon text-3xl font-light text-[#ff5722]">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="pt-4 text-gray-600 leading-relaxed pb-2">We develop comprehensive brand strategies that define your market position, audience targeting, and communication architecture. From brand audits to go-to-market planning.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item py-6 cursor-pointer" onclick="toggleAccordion(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl md:text-3xl font-light">Creative Development</h3>
+                        <span class="accordion-icon text-3xl font-light text-[#ff5722]">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="pt-4 text-gray-600 leading-relaxed pb-2">Our creative team crafts compelling narratives and visual identities. Campaign concepts, content creation, art direction, and copywriting that resonates.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item py-6 cursor-pointer" onclick="toggleAccordion(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl md:text-3xl font-light">Digital Experience</h3>
+                        <span class="accordion-icon text-3xl font-light text-[#ff5722]">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="pt-4 text-gray-600 leading-relaxed pb-2">We build digital ecosystems including websites, apps, and platforms. UX/UI design, development, and digital innovation that drives engagement.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item py-6 cursor-pointer" onclick="toggleAccordion(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl md:text-3xl font-light">Event Production</h3>
+                        <span class="accordion-icon text-3xl font-light text-[#ff5722]">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="pt-4 text-gray-600 leading-relaxed pb-2">From intimate gatherings to large-scale festivals, we produce memorable experiences. Concept, logistics, technical production, and on-site management.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item py-6 cursor-pointer" onclick="toggleAccordion(this)">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl md:text-3xl font-light">Media & Communications</h3>
+                        <span class="accordion-icon text-3xl font-light text-[#ff5722]">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p class="pt-4 text-gray-600 leading-relaxed pb-2">Integrated media planning and buying across all channels. PR strategy, influencer partnerships, and performance marketing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Testimonials -->
+    <section class="py-24 px-6 md:px-12 lg:px-24 bg-[#1a1a1a] text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 stagger-children">
+                <div class="reveal">
+                    <div class="text-[#ff5722] text-4xl mb-6">"</div>
+                    <p class="text-lg md:text-xl font-light leading-relaxed mb-8">Untold transformed our brand narrative completely. Their integrated approach meant every touchpoint told the same powerful story.</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" class="w-12 h-12 rounded-full object-cover" alt="Client">
+                        <div>
+                            <span class="block font-medium">Michael Chen</span>
+                            <span class="text-sm text-gray-400">CEO, TechVentures</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <div class="text-[#ff5722] text-4xl mb-6">"</div>
+                    <p class="text-lg md:text-xl font-light leading-relaxed mb-8">The team's ability to seamlessly blend strategy with creative execution is unmatched. They don't just deliver campaigns; they create movements.</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop" class="w-12 h-12 rounded-full object-cover" alt="Client">
+                        <div>
+                            <span class="block font-medium">Sarah Williams</span>
+                            <span class="text-sm text-gray-400">CMO, Global Brands</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reveal">
+                    <div class="text-[#ff5722] text-4xl mb-6">"</div>
+                    <p class="text-lg md:text-xl font-light leading-relaxed mb-8">Working with Untold felt like having an extension of our own team. Their ecosystem approach brought efficiency and excellence to every project.</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop" class="w-12 h-12 rounded-full object-cover" alt="Client">
+                        <div>
+                            <span class="block font-medium">David Park</span>
+                            <span class="text-sm text-gray-400">Director, Innovation Co</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Latest News -->
+    <section class="py-24 px-6 md:px-12 lg:px-24">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16 reveal">
+                <div>
+                    <span class="text-sm text-gray-500 tracking-widest uppercase mb-4 block">Insights</span>
+                    <h2 class="text-4xl md:text-6xl font-light">Latest Thinking</h2>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children">
+                <article class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-sm mb-6 aspect-[3/2]">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" 
+                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" alt="Article">
+                    </div>
+                    <span class="text-xs text-[#ff5722] uppercase tracking-widest">Strategy</span>
+                    <h3 class="text-xl font-medium mt-2 mb-3 group-hover:text-[#ff5722] transition-colors">The Future of Brand Storytelling in 2024</h3>
+                    <p class="text-sm text-gray-600 line-clamp-2">Exploring how immersive technologies are reshaping narrative experiences and consumer expectations.</p>
+                </article>
+                
+                <article class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-sm mb-6 aspect-[3/2]">
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=600&h=400&fit=crop" 
+                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" alt="Article">
+                    </div>
+                    <span class="text-xs text-[#ff5722] uppercase tracking-widest">Culture</span>
+                    <h3 class="text-xl font-medium mt-2 mb-3 group-hover:text-[#ff5722] transition-colors">Building Communities Through Live Events</h3>
+                    <p class="text-sm text-gray-600 line-clamp-2">Why physical gatherings remain essential in an increasingly digital world.</p>
+                </article>
+                
+                <article class="group cursor-pointer">
+                    <div class="overflow-hidden rounded-sm mb-6 aspect-[3/2]">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" 
+                             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" alt="Article">
+                    </div>
+                    <span class="text-xs text-[#ff5722] uppercase tracking-widest">Technology</span>
+                    <h3 class="text-xl font-medium mt-2 mb-3 group-hover:text-[#ff5722] transition-colors">Data-Driven Creativity: A New Paradigm</h3>
+                    <p class="text-sm text-gray-600 line-clamp-2">Balancing analytics and intuition in modern marketing strategies.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: CTA -->
+    <section id="contact" class="py-32 px-6 md:px-12 lg:px-24 bg-[#ff5722] text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <path d="M0,50 Q25,30 50,50 T100,50 L100,100 L0,100 Z" fill="white"/>
+            </svg>
+        </div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10 reveal">
+            <h2 class="text-4xl md:text-6xl lg:text-7xl font-light mb-8">Let's tell your story</h2>
+            <p class="text-lg md:text-xl mb-12 opacity-90">Ready to transform how the world sees your brand? We're here to help.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-white text-[#ff5722] px-8 py-4 text-sm font-semibold tracking-widest uppercase rounded-sm hover:bg-[#1a1a1a] hover:text-white transition-colors">
+                    Start a Project
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 text-sm font-semibold tracking-widest uppercase rounded-sm hover:bg-white hover:text-[#ff5722] transition-colors">
+                    View Our Work
+                </button>
+            </div>
+        </div>
+        
+        <!-- Decorative elements -->
+        <div class="absolute top-10 left-10 w-20 h-20 border-2 border-white/30 rounded-full"></div>
+        <div class="absolute bottom-10 right-10 w-32 h-32 border-2 border-white/30 rounded-full"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 md:px-12 lg:px-24 bg-[#1a1a1a] text-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <div class="text-3xl font-medium mb-6">untold</div>
+                    <p class="text-gray-400 max-w-sm mb-6">A communications ecosystem built to rethink how brands connect with their audiences. Six agencies. One integrated team.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:border-[#ff5722] hover:text-[#ff5722] transition-colors">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:border-[#ff5722] hover:text-[#ff5722] transition-colors">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:border-[#ff5722] hover:text-[#ff5722] transition-colors">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-widest mb-6 text-gray-400">Navigation</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="footer-link text-gray-300 hover:text-white transition-colors">Work</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 hover:text-white transition-colors">Insights</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="footer-link text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-sm font-semibold uppercase tracking-widest mb-6 text-gray-400">Contact</h4>
+                    <ul class="space-y-3 text-gray-300">
+                        <li>hello@untold.com</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li class="pt-2">123 Creative Avenue<br>New York, NY 10001</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-500">&copy; 2024 Untold Communications. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-gray-500">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            cursor.style.left = cursorX - 4 + 'px';
+            cursor.style.top = cursorY - 4 + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+        
+        // Hover effects for cursor
+        const hoverElements = document.querySelectorAll('a, button, .image-stack, .door-illustration, .work-card, .accordion-item');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+        
+        // Accordion toggle
+        function toggleAccordion(element) {
+            const isActive = element.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked if wasn't active
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+        
+        // Intersection Observer for reveals
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate numbers if stat section
+                    if (entry.target.querySelector('.stat-number')) {
+                        animateNumbers(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.reveal, .stagger-children, .image-reveal').forEach(el => observer.observe(el));
+        
+        // Number counter animation
+        function animateNumbers(container) {
+            const numbers = container.querySelectorAll('.stat-number');
+            numbers.forEach(num => {
+                const target = parseInt(num.getAttribute('data-target'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        num.textContent = target + '+';
+                        clearInterval(timer);
+                    } else {
+                        num.textContent = Math.floor(current);
+                    }
+                }, 16);
+            });
+        }
+        
+        // Magnetic button effect
+        const buttons = document.querySelectorAll('.btn-primary');
+        buttons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translate(0, 0)';
+            });
+        });
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
