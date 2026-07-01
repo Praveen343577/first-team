@@ -101,3 +101,10 @@ https://github.com/fsalinas26/qt-liquid-glass?tab=readme-ov-file
 https://github.com/Meridius-Labs/electron-liquid-glass
 https://github.com/kube/kube.io/tree/main/app/data/articles/2025_10_04_liquid_glass_css_svg
 https://github.com/winaviation/liquid-glass-demo/tree/main
+
+
+BROWSER
+
+https://unsplash.com/photos/a-close-up-of-a-gold-and-silver-object-QZTLHvvFqb4
+https://unsplash.com/photos/photo-of-two-black-white-and-orange-koi-fish-Dksk8szLRN0
+https://makerkit.dev/blog/tutorials/reusable-table-component-reactjs
